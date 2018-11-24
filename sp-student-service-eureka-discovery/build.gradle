@@ -14,9 +14,12 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+mainClassName = 'com.ms.SpStudentServiceEurekaDiscoveryApplication'
+
 
 group = 'com.ms'
-version = '0.0.1-SNAPSHOT'
+version = '0.1.0'
 sourceCompatibility = 1.8
 
 repositories {
@@ -34,8 +37,19 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
+jar {
+    baseName = 'student_service_eureka'
+    version =  '0.1.0'
+    manifest {
+        attributes 'Implementation-Title': 'student_service_eureka',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.ms.SpStudentServiceEurekaDiscoveryApplication'
+    }
+}
+
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+

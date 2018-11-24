@@ -1,0 +1,7 @@
+FROM java:8
+RUN mkdir /var/tmp/studentservice
+RUN ls /var/tmp/studentservice/
+COPY . /var/tmp/studentservice/
+WORKDIR /var/tmp/studentservice
+RUN  ls ./gradlew
+CMD ["./gradlew","run"]
